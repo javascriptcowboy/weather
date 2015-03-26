@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(EmberValidations.Mixin, {
 
   // Properties
 
@@ -9,6 +10,27 @@ export default Ember.Controller.extend({
    * @type {function}
    */
   weather: Ember.inject.service(),
+
+  /**
+   * used for validating properties
+   * @type {Object}
+   */
+  validations: {
+    zipCode: {
+      presence: true,
+      numericality: true,
+      length: {
+        minimum: 5,
+        maximum: 5
+      }
+    }
+  },
+
+  /**
+   * used to show/hide errors when focus out of input
+   * @type {Boolean}
+   */
+  showError: false,
 
   /**
    * property used for searching by zip code
@@ -40,7 +62,15 @@ export default Ember.Controller.extend({
    */
   handleError: function(error) {
 
-    console.log(error);
+    if (error.description) {
+
+      alert(error.description);
+
+    } else {
+
+      console.log(error);
+
+    }
 
   },
 
@@ -56,6 +86,10 @@ export default Ember.Controller.extend({
       var self = this,
           zipCode = this.get('zipCode');
 
+      this.set('showError', false);
+
+      this.set('responseObject', null);
+
       this.get('weather')
           .getConditionsByZip(zipCode)
           .then(
@@ -63,9 +97,19 @@ export default Ember.Controller.extend({
         // Success
         function(response) {
 
-          Ember.run(function() {
-            self.handleSuccess(response);
-          });
+          if (response.response.error) {
+
+            Ember.run(function() {
+              self.handleError(response.response.error);
+            });
+
+          } else {
+
+            Ember.run(function() {
+              self.handleSuccess(response);
+            });
+
+          }
 
         },
 
@@ -79,6 +123,16 @@ export default Ember.Controller.extend({
         }
 
       );
+
+    },
+
+    /**
+     * toggles showing the validation errors
+     *
+     */
+    showErrors: function() {
+
+      this.set('showError', true);
 
     }
 
