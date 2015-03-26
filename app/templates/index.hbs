@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Search</h1>
+    <p>Search for cities by zip code.</p>
+    <form class="form-inline" {{action "searchWeather" on="submit"}}>
+      <div class="form-group">
+        <label for="zipCode">Zip Code</label>
+        {{input id="zipCode" class="form-control" type="text" value=zipCode placeholder="97007"}}
+      </div>
+      <button type="submit" class="btn btn-default">Search</button>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h3>Debug:</h3>
+    {{{responseObject}}}
+  </div>
+</div>
