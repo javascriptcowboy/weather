@@ -17,15 +17,22 @@ export default Ember.Service.extend({
   baseUrl: 'http://api.wunderground.com/api/',
 
   /**
+   * type of response format
+   * @type {String}
+   */
+  responseFormat: '.json',
+
+  /**
    * searches the Weather Underground API for conditions based on zip code
    * @param  {string} zipCode
    * @return {JSON|Error}
    */
   getConditionsByZip: function(zipCode) {
 
-    var apiKey = this.get('apiKey'),
-        baseUrl = this.get('baseUrl'),
-        url = baseUrl + apiKey + '/conditions/q/' + zipCode + '.json';
+    var baseUrl = this.get('baseUrl'),
+        apiKey = this.get('apiKey'),
+        responseFormat = this.get('responseFormat'),
+        url = baseUrl + apiKey + '/conditions/q/' + zipCode + responseFormat;
 
     return Ember.$.ajax({
       type: 'GET',
