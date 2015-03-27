@@ -34,6 +34,12 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
   showError: false,
 
   /**
+   * used for showing spinner during AJAX call
+   * @type {Boolean}
+   */
+  isLoading: false,
+
+  /**
    * property used for searching by zip code
    * @type {String}
    */
@@ -112,12 +118,16 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
 
       this.set('showError', false);
 
+      this.set('isLoading', true);
+
       this.get('weather')
           .getConditionsByZip(zipCode)
           .then(
 
         // Success
         function(response) {
+
+          self.set('isLoading', false);
 
           if (response.response.error) {
 
@@ -137,6 +147,8 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
 
         // Failure
         function(error) {
+
+          self.set('isLoading', false);
 
           Ember.run(function() {
             self.handleError(error);

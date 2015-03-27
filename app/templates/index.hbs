@@ -42,3 +42,11 @@
     {{result-item item=result totalComparables=totalComparables removeResult="removeResult" addToCompare="addToCompare" removeFromCompare="removeFromCompare"}}
   {{/each}}
 </div>
+
+{{#if isLoading}}
+  <div class="loading">
+    <div class="indicator-loading">
+      <img class="spinner" src="img/loading.gif" alt="Loading...">
+    </div>
+  </div>
+{{/if}}

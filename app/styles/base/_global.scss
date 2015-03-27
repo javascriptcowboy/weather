@@ -23,3 +23,19 @@ h3 {
 .feels-like {
   text-align: center;
 }
+
+.loading {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 99999;
+
+  .indicator-loading {
+    position: relative;
+    top: 170px;
+  }
+}
