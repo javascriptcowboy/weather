@@ -14,6 +14,17 @@ export default Ember.Route.extend({
 
     return Ember.A();
 
+  },
+
+  /**
+   * reset comparables when transitioning into route
+   */
+  setupController: function(controller, model) {
+
+    this._super(controller, model);
+
+    controller.set('comparables', Ember.A());
+
   }
 
 });

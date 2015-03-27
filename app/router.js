@@ -7,6 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('about');
+  this.route('compare', { path: '/compare/:comparables' });
 });
 
 export default Router;

@@ -2,11 +2,6 @@
   border-top: 1px solid #ccc;
   padding: 12px;
 
-  h3 {
-    font-size: 18px;
-    margin-top: 0;
-  }
-
   .checkbox-inline {
     margin-left: 12px;
     vertical-align: top;
@@ -16,24 +11,7 @@
     margin-bottom: 6px;
   }
 
-  .current-temp {
-    font-size: 32px;
-    text-align: center;
-  }
-
-  .feels-like {
-    text-align: center;
-  }
-
   .text-muted {
     margin: 0;
   }
-}
-
-.temp-warm {
-  color: #fe9a3b;
-}
-
-.temp-cool {
-  color: #15aadc;
 }

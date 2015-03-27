@@ -45,11 +45,12 @@ export default Ember.Mixin.create({
 
   actions: {
 
+    /**
+     * Transition to the Compare route, passing in the comparables array
+     */
     compareItems: function() {
 
-      // TODO: Launch modal (or maybe new route) passing in comparables array
-
-      console.log('COMPARE!!!');
+      this.transitionToRoute('compare', this.get('comparables'));
 
     },
 
