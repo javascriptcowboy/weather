@@ -18,19 +18,19 @@ var app = new EmberApp();
 // along with the exports of each module as its value.
 
 app.import('bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot', {
-  destDir: 'fonts'
+  destDir: 'fonts/bootstrap'
 });
 app.import('bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf', {
-  destDir: 'fonts'
+  destDir: 'fonts/bootstrap'
 });
 app.import('bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.svg', {
-  destDir: 'fonts'
+  destDir: 'fonts/bootstrap'
 });
 app.import('bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff', {
-  destDir: 'fonts'
+  destDir: 'fonts/bootstrap'
 });
 app.import('bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff2', {
-  destDir: 'fonts'
+  destDir: 'fonts/bootstrap'
 });
 
 app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js');

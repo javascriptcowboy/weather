@@ -1,0 +1,39 @@
+.result-item {
+  border-top: 1px solid #ccc;
+  padding: 12px;
+
+  &:last-of-type {
+    border-bottom: 1px solid #ccc;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-top: 0;
+  }
+
+  .checkbox-inline {
+    margin-left: 12px;
+    vertical-align: top;
+  }
+
+  .img-responsive {
+    margin-bottom: 6px;
+  }
+
+  .current-temp {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .feels-like {
+    text-align: center;
+  }
+}
+
+.temp-warm {
+  color: #fe9a3b;
+}
+
+.temp-cool {
+  color: #15aadc;
+}

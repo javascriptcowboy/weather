@@ -1,0 +1,18 @@
+<div class="result-item">
+  <h3>
+    <a {{bind-attr href=item.ob_url}} data-toggle="tooltip" data-placement="right" title="View on Weather Underground">{{item.display_location.full}}</a>
+    <label class="checkbox-inline pull-right">
+      <input type="checkbox" id="compare-1" value="option1"> <small>Compare</small>
+    </label>
+  </h3>
+  <div class="row">
+    <div class="col-xs-6">
+      {{weather-icon item.icon}}
+      <p class="weather-text text-center">{{item.weather}}</p>
+    </div>
+    <div class="col-xs-6">
+      <p class="current-temp"><span {{bind-attr class=tempColor}}>{{item.temp_f}} &deg;F</span></p>
+      <p class="feels-like">Feels like <span {{bind-attr class=tempColor}}>{{item.feelslike_f}} &deg;F</span></p>
+    </div>
+  </div>
+</div>

@@ -48,7 +48,7 @@ module.exports = function(environment) {
     'script-src': "'self'",
     'font-src': "'self'",
     'connect-src': "'self' http://api.wunderground.com",
-    'img-src': "'self'",
+    'img-src': "'self' http://icons.wxug.com/",
     'style-src': "'self'",
     'media-src': "'self'"
   }

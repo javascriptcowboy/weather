@@ -38,12 +38,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
    */
   zipCode: '',
 
-  /**
-   * temp property
-   * @type {JSON}
-   */
-  responseObject: null,
-
   // Methods
 
   /**
@@ -52,7 +46,13 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
    */
   handleSuccess: function(response) {
 
-    this.set('responseObject', JSON.stringify(response));
+    // console.log(response);
+
+    // Push the new object on to the model
+    this.get('model').pushObject(response.current_observation);
+
+    // Reset the zip code
+    this.set('zipCode', '');
 
   },
 
@@ -87,8 +87,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
           zipCode = this.get('zipCode');
 
       this.set('showError', false);
-
-      this.set('responseObject', null);
 
       this.get('weather')
           .getConditionsByZip(zipCode)
