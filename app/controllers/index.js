@@ -59,8 +59,6 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
    */
   handleSuccess: function(response) {
 
-    console.log(response.current_observation);
-
     var tempItem = response.current_observation;
 
     // Push the new object on to the model
