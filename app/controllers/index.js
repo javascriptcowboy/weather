@@ -83,6 +83,8 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
      */
     searchWeather: function() {
 
+      // TODO: Show loading gif
+
       var self = this,
           zipCode = this.get('zipCode');
 
