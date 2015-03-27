@@ -41,6 +41,38 @@ export default Ember.Component.extend({
     }
   ),
 
+  // Methods
+
+  /**
+   * Sends action to add item to compare
+   */
+  compare: function() {
+
+    if (this.get('itemSelected')) {
+
+      this.sendAction('addToCompare', this.get('item'));
+
+    } else {
+
+      this.sendAction('removeFromCompare', this.get('item'));
+
+    }
+
+  }.observes('itemSelected'),
+
+  /**
+   * if totalComparables becomes zero from clearing, set checkbox to false
+   */
+  clearCheckbox: function() {
+
+    if (this.get('totalComparables') === 0) {
+
+      this.set('itemSelected', false);
+
+    }
+
+  }.observes('totalComparables'),
+
   // Events
 
   /**
@@ -55,23 +87,6 @@ export default Ember.Component.extend({
   // Actions
 
   actions: {
-
-    /**
-     * Sends action to add item to compare
-     */
-    compare: function() {
-
-      if (this.get('itemSelected')) {
-
-        this.sendAction('addToCompare', this.get('item'));
-
-      } else {
-
-        this.sendAction('removeFromCompare', this.get('item'));
-
-      }
-
-    },
 
     /**
      * Sends action to remove item from result set

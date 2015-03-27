@@ -47,7 +47,9 @@ export default Ember.Mixin.create({
 
     compareItems: function() {
 
-      // TODO: Launch modal passing in comparables array
+      // TODO: Launch modal (or maybe new route) passing in comparables array
+
+      console.log('COMPARE!!!');
 
     },
 

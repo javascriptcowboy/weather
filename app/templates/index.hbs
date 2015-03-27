@@ -19,18 +19,19 @@
   <div class="row">
     <div class="col-xs-6">
       {{!-- Future sorting tool --}}
+      <p>Total Cities: {{totalItems}}</p>
     </div>
     <div class="col-xs-6">
       {{#if multipleItems}}
         {{#if oneComparable}}
-          <span>Select one more</span>
+          <p class="pull-right">Select one more</p>
         {{else if maxComparables}}
           <p class="pull-right">
             <button {{action "clearCompare"}} class="btn btn-default btn-xs">Clear</button>
             <button {{action "compareItems"}} class="btn btn-primary btn-xs">Compare</button>
           </p>
         {{else}}
-          <span>Select items to compare</span>
+          <p class="pull-right">Select items to compare</p>
         {{/if}}
       {{/if}}
     </div>
@@ -38,6 +39,6 @@
 </div>
 <div class="result-set">
   {{#each model as |result|}}
-    {{result-item item=result totalComparables=totalComparables removeResult="removeResult"}}
+    {{result-item item=result totalComparables=totalComparables removeResult="removeResult" addToCompare="addToCompare" removeFromCompare="removeFromCompare"}}
   {{/each}}
 </div>
