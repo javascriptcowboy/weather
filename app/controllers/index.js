@@ -156,7 +156,11 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
      */
     showErrors: function() {
 
-      this.set('showError', true);
+      if (this.get('zipCode')) {
+
+        this.set('showError', true);
+
+      }
 
     },
 
