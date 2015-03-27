@@ -4,6 +4,18 @@ export default Ember.Component.extend({
 
   // Properties
 
+  itemSelected: false,
+
+  /**
+   * computed property - if checkbox not selected, and if 2 comparables are selected, disable checkbox
+   * @return {boolean}
+   */
+  checkboxDisabled: function() {
+
+    return (!this.get('itemSelected')) && (this.get('totalComparables') === 2);
+
+  }.property('totalComparables'),
+
   /**
    * computed property that returns a css class based on temp value
    */
@@ -44,7 +56,31 @@ export default Ember.Component.extend({
 
   actions: {
 
-    // TODO: Handle checkbox action for comparing
+    /**
+     * Sends action to add item to compare
+     */
+    compare: function() {
+
+      if (this.get('itemSelected')) {
+
+        this.sendAction('addToCompare', this.get('item'));
+
+      } else {
+
+        this.sendAction('removeFromCompare', this.get('item'));
+
+      }
+
+    },
+
+    /**
+     * Sends action to remove item from result set
+     */
+    removeResult: function() {
+
+      this.sendAction('removeResult', this.get('item'));
+
+    }
 
   }
 

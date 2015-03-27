@@ -1,9 +1,11 @@
 <div class="result-item">
   <h3>
     <a {{bind-attr href=item.ob_url}} data-toggle="tooltip" data-placement="right" title="View on Weather Underground">{{item.display_location.full}}</a>
-    <label class="checkbox-inline pull-right">
-      <input type="checkbox" id="compare-1" value="option1"> <small>Compare</small>
-    </label>
+    {{#if targetObject.multipleItems}}
+      <label class="checkbox-inline pull-right">
+        {{input type="checkbox" checked=itemSelected disabled=checkboxDisabled}} <small>Compare</small>
+      </label>
+    {{/if}}
   </h3>
   <div class="row">
     <div class="col-xs-6">
@@ -13,6 +15,14 @@
     <div class="col-xs-6">
       <p class="current-temp"><span {{bind-attr class=tempColor}}>{{item.temp_f}} &deg;F</span></p>
       <p class="feels-like">Feels like <span {{bind-attr class=tempColor}}>{{item.feelslike_f}} &deg;F</span></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10">
+      <p class="text-muted"><small>{{item.observation_time}}</small></p>
+    </div>
+    <div class="col-xs-2">
+      <button type="button" class="close" {{action "removeResult"}}><span aria-hidden="true">&times;</span></button>
     </div>
   </div>
 </div>

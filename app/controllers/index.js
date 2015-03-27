@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
+import ComparableMixin from '../mixins/comparable';
 
-export default Ember.Controller.extend(EmberValidations.Mixin, {
+export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, {
 
   // Properties
 
@@ -38,6 +39,18 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
    */
   zipCode: '',
 
+  /**
+   * keeps track of number of items in model
+   * @type {number}
+   */
+  totalItems: Ember.computed.alias('model.length'),
+
+  /**
+   * boolean to know if more than one item in result set
+   * @type {boolean}
+   */
+  multipleItems: Ember.computed.gt('totalItems', 1),
+
   // Methods
 
   /**
@@ -46,10 +59,21 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
    */
   handleSuccess: function(response) {
 
-    // console.log(response);
+    console.log(response.current_observation);
+
+    var tempItem = response.current_observation;
 
     // Push the new object on to the model
-    this.get('model').pushObject(response.current_observation);
+    this.get('model').pushObject(Ember.Object.create({
+      id: tempItem.display_location.zip,
+      ob_url: tempItem.ob_url,
+      display_location: tempItem.display_location,
+      icon: tempItem.icon,
+      weather: tempItem.weather,
+      temp_f: tempItem.temp_f,
+      feelslike_f: tempItem.feelslike_f,
+      observation_time: tempItem.observation_time
+    }));
 
     // Reset the zip code
     this.set('zipCode', '');
@@ -133,6 +157,16 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
     showErrors: function() {
 
       this.set('showError', true);
+
+    },
+
+    /**
+     * removes selected item from the model array
+     * @param  {object} item
+     */
+    removeResult: function(item) {
+
+      this.get('model').removeObject(item);
 
     }
 
