@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import TempColorMixin from '../mixins/temp-color';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(TempColorMixin, {
 
   // Properties
 
@@ -15,31 +16,6 @@ export default Ember.Component.extend({
     return (!this.get('itemSelected')) && (this.get('totalComparables') === 2);
 
   }.property('totalComparables'),
-
-  /**
-   * computed property that returns a css class based on temp value
-   */
-  tempColor: Ember.computed(
-    'item.temp_f',
-    function() {
-
-      var temp = this.get('item.temp_f'),
-          tempClass = '';
-
-      if (temp > 60) {
-
-          tempClass = 'temp-warm';
-
-      } else {
-
-        tempClass = 'temp-cool';
-
-      }
-
-      return tempClass;
-
-    }
-  ),
 
   // Methods
 

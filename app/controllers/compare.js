@@ -6,19 +6,18 @@ export default Ember.Controller.extend({
 
   differenceInTemp: function() {
 
-    var tempArray = [];
+    var tempArray = [],
+        i,
+        result = 0;
 
-    this.get('model').forEach(function(item, index) {
+    // Extract out temps from each object
+    this.get('model').forEach(function(item) {
 
       tempArray.push(item.temp_f);
 
     });
 
-    console.log(tempArray);
-
-    var i,
-    result = 0;
-
+    // loop through temps and substract the difference
     for (i = 0; i < tempArray.length; i++) {
 
       if (i === 0) {
@@ -31,8 +30,9 @@ export default Ember.Controller.extend({
 
       }
 
-    };
+    }
 
+    // return the difference, use absolute value in case negative, and set to 1 decimal.
     result = Math.abs(result.toFixed(1));
 
     return result;
