@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 
     });
 
-    // loop through temps and substract the difference
+    // loop through temps and subtract the difference
     for (i = 0; i < tempArray.length; i++) {
 
       if (i === 0) {
