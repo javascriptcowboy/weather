@@ -123,7 +123,11 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
    */
   cancelLoading: function() {
 
-    this.set('isLoading', false);
+    var self = this;
+
+    Ember.run(function() {
+      self.set('isLoading', false);
+    });
 
   },
 
