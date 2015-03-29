@@ -3,8 +3,9 @@
     <h1>Weather <small><span class="glyphicon glyphicon-search"></span></small></h1>
     <p>Search Weather Underground for current weather conditions.</p>
     <form class="form-inline" {{action "searchWeather" on="submit"}}>
+      {{partial "alerts"}}
       <div class="input-group">
-        {{input id="zipCode" class="form-control" type="text" value=zipCode placeholder="Search by zip code" focus-out="showErrors"}}
+        {{input id="zipCode" class="form-control" type="tel" value=zipCode placeholder="Search by zip code" focus-out="showErrors"}}
         <span class="input-group-btn">
           {{input class="btn btn-primary" type="submit" value="Search" disabled=isInvalid}}
         </span>

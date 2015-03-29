@@ -34,6 +34,12 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
   showError: false,
 
   /**
+   * used to display server side errors in an Alert Box component
+   * @type {String}
+   */
+  alertMsg: '',
+
+  /**
    * used for showing spinner during AJAX call
    * @type {Boolean}
    */
@@ -79,8 +85,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
       observation_time: tempItem.observation_time
     }));
 
-    // Reset the zip code
-    this.set('zipCode', '');
+    this.resetZipCode();
 
   },
 
@@ -92,13 +97,33 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
 
     if (error.description) {
 
-      alert(error.description);
+      this.set('alertMsg', error.description);
 
     } else {
 
-      console.log(error);
+      this.set('alertMsg', 'Something unexpected happened. Please try again later.');
 
     }
+
+    this.resetZipCode();
+
+  },
+
+  /**
+   * reset the zipCode field
+   */
+  resetZipCode: function() {
+
+    this.set('zipCode', '');
+
+  },
+
+  /**
+   * cancels loading, hides spinner
+   */
+  cancelLoading: function() {
+
+    this.set('isLoading', false);
 
   },
 
@@ -114,7 +139,11 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
       var self = this,
           zipCode = this.get('zipCode');
 
+      // Clear client side validation errors
       this.set('showError', false);
+
+      // Clear server side errors
+      this.send('removeAlert');
 
       this.set('isLoading', true);
 
@@ -125,7 +154,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
         // Success
         function(response) {
 
-          self.set('isLoading', false);
+          self.cancelLoading();
 
           if (response.response.error) {
 
@@ -146,7 +175,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
         // Failure
         function(error) {
 
-          self.set('isLoading', false);
+          self.cancelLoading();
 
           Ember.run(function() {
             self.handleError(error);
@@ -179,6 +208,15 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
     removeResult: function(item) {
 
       this.get('model').removeObject(item);
+
+    },
+
+    /**
+     * resets alertMsg, therefore hiding the Alert Box component
+     */
+    removeAlert: function() {
+
+      this.set('alertMsg', '');
 
     }
 
