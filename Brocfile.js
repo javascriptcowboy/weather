@@ -35,4 +35,6 @@ app.import('bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyp
 
 app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js');
 
+app.import('bower_components/es5-shim/es5-shim.js', { type: 'vendor', prepend: true });
+
 module.exports = app.toTree();
