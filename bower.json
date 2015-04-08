@@ -2,7 +2,7 @@
   "name": "weather",
   "dependencies": {
     "jquery": "^1.11.1",
-    "ember": "1.10.0",
+    "ember": "1.11.1",
     "ember-data": "1.0.0-beta.16.1",
     "ember-resolver": "~0.1.14",
     "loader.js": "ember-cli/loader.js#3.2.0",
@@ -12,7 +12,7 @@
     "ember-qunit": "0.2.8",
     "ember-qunit-notifications": "0.0.7",
     "qunit": "~1.17.1",
-    "bootstrap-sass-official": "~3.3.0",
+    "bootstrap-sass-official": "~3.3.4",
     "es5-shim": "^4.0.5"
   }
 }
