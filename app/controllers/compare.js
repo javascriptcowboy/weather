@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
 
     this.get('model').reduce(function(prev,next){
 
-      result = prev.temp_f - next.temp_f;
+      result = prev.get('temp_f') - next.get('temp_f');
 
     });
 

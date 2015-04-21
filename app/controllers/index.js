@@ -73,9 +73,7 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
 
     var tempItem = response.current_observation;
 
-    // Push the new object on to the model
-    this.get('model').pushObject(Ember.Object.create({
-      id: tempItem.display_location.zip,
+    var newModel = this.store.createRecord('weather-item', {
       ob_url: tempItem.ob_url,
       display_location: tempItem.display_location,
       icon: tempItem.icon,
@@ -83,7 +81,9 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
       temp_f: tempItem.temp_f,
       feelslike_f: tempItem.feelslike_f,
       observation_time: tempItem.observation_time
-    }));
+    });
+
+    newModel.save();
 
     this.resetZipCode();
 
@@ -211,7 +211,11 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
      */
     removeResult: function(item) {
 
-      this.get('model').removeObject(item);
+      item.deleteRecord();
+
+      item.save();
+
+      // this.get('model').removeObject(item);
 
     },
 

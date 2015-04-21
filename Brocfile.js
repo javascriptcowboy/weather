@@ -37,4 +37,6 @@ app.import('bower_components/bootstrap-sass-official/assets/javascripts/bootstra
 
 app.import('bower_components/es5-shim/es5-shim.js', { type: 'vendor', prepend: true });
 
+app.import("bower_components/ember-localstorage-adapter/localstorage_adapter.js");
+
 module.exports = app.toTree();
