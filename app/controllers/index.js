@@ -6,6 +6,10 @@ export default Ember.Controller.extend(EmberValidations.Mixin, ComparableMixin, 
 
   // Properties
 
+  sortProperties: ['display_location.full:asc'],
+
+  sortedResults: Ember.computed.sort('model', 'sortProperties'),
+
   /**
    * injects the weather service into controller
    * @type {function}

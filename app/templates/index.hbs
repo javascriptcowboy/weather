@@ -39,7 +39,7 @@
   </div>
 </div>
 <div class="result-set">
-  {{#each model as |result|}}
+  {{#each sortedResults as |result|}}
     {{result-item item=result totalComparables=totalComparables removeResult="removeResult" addToCompare="addToCompare" removeFromCompare="removeFromCompare"}}
   {{/each}}
 </div>
