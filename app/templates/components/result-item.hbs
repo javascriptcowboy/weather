@@ -1,6 +1,6 @@
 <div class="result-item">
   <h3>
-    <a {{bind-attr href=item.ob_url}} data-toggle="tooltip" data-placement="right" title="View on Weather Underground">{{item.display_location.full}}</a>
+    <a href="{{item.ob_url}}" data-toggle="tooltip" data-placement="right" title="View on Weather Underground">{{item.display_location.full}}</a>
     {{#if targetObject.multipleItems}}
       <label class="checkbox-inline pull-right">
         {{input type="checkbox" checked=itemSelected disabled=checkboxDisabled}} <small>Compare</small>
@@ -13,8 +13,8 @@
       <p class="weather-text text-center">{{item.weather}}</p>
     </div>
     <div class="col-xs-6">
-      <p class="current-temp"><span {{bind-attr class=tempColor}}>{{item.temp_f}} &deg;F</span></p>
-      <p class="feels-like">Feels like <span {{bind-attr class=tempColor}}>{{item.feelslike_f}} &deg;F</span></p>
+      <p class="current-temp"><span class="{{tempColor}}">{{item.temp_f}} &deg;F</span></p>
+      <p class="feels-like">Feels like <span class="{{tempColor}}">{{item.feelslike_f}} &deg;F</span></p>
     </div>
   </div>
   <div class="row">
