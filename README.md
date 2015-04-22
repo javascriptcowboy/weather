@@ -3,7 +3,6 @@
 Search weather using Weather Underground
 
 ## TODO
-* Clear comparables when going back to index route
 * get findMany method of local storage adapter to work for compare route
 
 ## Prerequisites
